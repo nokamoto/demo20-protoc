@@ -1,0 +1,11 @@
+syntax="proto3";
+
+package test;
+
+option go_package="github.com/nokamoto/demo20-protoc/test";
+
+import "google/protobuf/empty.proto";
+
+message Test{
+  google.protobuf.Empty empty = 1;
+}
