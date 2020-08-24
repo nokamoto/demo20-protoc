@@ -16,6 +16,8 @@ RUN unzip protoc-3.13.0-linux-x86_64.zip
 
 FROM debian:10.5-slim
 
+RUN apt-get update && apt-get install -y git
+
 COPY --from=protoc-gen-go /go/bin/protoc-gen-go /usr/local/bin/protoc-gen-go
 
 COPY --from=protoc /include /usr/local/include
