@@ -1,0 +1,8 @@
+{
+  "config": {
+    "/test.TestService/Foo": {
+      "permission": "foo",
+      "insecure": true
+    }
+  }
+}

@@ -4,8 +4,28 @@ package test;
 
 option go_package="github.com/nokamoto/demo20-protoc/test";
 
+import "google/protobuf/descriptor.proto";
 import "google/protobuf/empty.proto";
 
-message Test{
+message TestMessage {
   google.protobuf.Empty empty = 1;
+}
+
+message Authz {
+  string permission = 1;
+  bool insecure = 2;
+}
+
+extend google.protobuf.MethodOptions {
+  Authz authz = 50000;
+}
+
+service TestService {
+  rpc Foo(google.protobuf.Empty) returns (google.protobuf.Empty){
+    option (authz) = {
+      insecure: true
+      permission: "foo"
+    };
+  }
+  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
 }

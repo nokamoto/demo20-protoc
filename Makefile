@@ -1,2 +1,2 @@
 all:
-	docker run -v $(PWD):/protobuf -w /protobuf --rm $$(docker build -q .) protoc --go_out=paths=source_relative:. -I . test/test.proto
+	docker run -v $(PWD):/protobuf -w /protobuf --rm $$(docker build -q .) protoc --go_out=paths=source_relative:. --authz_out=paths=source_relative:. -I . test/test.proto
